@@ -30,10 +30,13 @@ let make = (~route, _children) => {
     let page =
       switch route {
       | DashBoardRoute => <DashBoard books />
+      | BookDetailsRoute(bookId) => <BookDetail books bookId save=((book) => ()) />
       /* TODO: pattern match with all routes the app has  */
       };
     <div>
-       page </div>
+      <Navbar books />
+      page 
+    </div>
       /* TODO: display the Navbar component */
   }
 };
