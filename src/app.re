@@ -17,7 +17,7 @@ let component = ReasonReact.reducerComponent("App");
    'make' is the function a JSX element will call.
    e.g.: this make function will be called with <App/>
  */
-let test = (~route, _children) => {
+let make = (~route, _children) => {
   ...component,
   initialState: () => {books: Database.books},
   /*

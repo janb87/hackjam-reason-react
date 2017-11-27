@@ -9,6 +9,11 @@ type action;
 
 type state = {book: option(Database.book)};
 
+type actionVariant =
+  | TitleChange(string)
+  | DescriptionChange(string)
+  | ChangeBook(option(Database.book));
+
 let getBook = (bookId, books) =>
   switch bookId {
   | None => None
