@@ -1,24 +1,26 @@
 let component = ReasonReact.statelessComponent("App");
 
 let book = (book: Database.book) => {
-  let href = "#/detail/"; /*  4. Feature : TODO: should point to correct url with book id */
+  let href = "#/detail/" ++ string_of_int(book.id); /*  4. Feature : TODO: should point to correct url with book id */
   <div className="column is-one-quarter" key=(string_of_int(book.id))>
     <div className="card">
-      <a>
+      <a href>
         <div className="card-header">
           <p
-            className="card-header-title has-text-centered" /* Book title */
-          />
+            className="card-header-title has-text-centered">
+            (Utils.ste(book.title))
+          </p>
         </div>
         <div className="card-content">
           <div className="content">
-            /* Book description */
+            (Utils.ste(book.description))
              <br /> </div>
         </div>
         <div className="card-footer">
           <p
-            className="card-footer-item" /* Book category*/
-          />
+            className="card-footer-item">
+            (Utils.ste(book.category))
+          </p>
         </div>
       </a>
     </div>
