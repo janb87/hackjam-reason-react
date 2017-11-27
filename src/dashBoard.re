@@ -31,10 +31,13 @@ let make = (~books, _children) => {
     <section className="section">
       <div className="container">
         <div className="columns is-multiline">
-
-            (Utils.ste("Well done, you rendered the Dashboard. You should now display all books"))
-          </div>
-          /* 4. Feature : TODO display all books */
+          (
+            List.map(book, books)
+            |> Array.of_list
+            |> ReasonReact.arrayToElement
+          )
+        </div>
+        /* 4. Feature : TODO display all books */
       </div>
     </section>
 };
