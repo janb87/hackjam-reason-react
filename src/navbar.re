@@ -8,7 +8,7 @@ let make = (~books, _children) => {
         <div className="navbar-item">
           <img src="./images/hackages.jpg" alt="Logo" width="112" height="28" />
         </div>
-        <div className="navbar-item"> <h1> <span> {Utils.ste("Bookstore")} </span> </h1> </div>
+        <div className="navbar-item"> <h1> <span> (Utils.ste("Bookstore")) </span> </h1> </div>
       </div>
       <div id="navmenuMobile" className="navbar-menu is-active">
         <div className="navbar-start">

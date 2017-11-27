@@ -24,13 +24,30 @@ let make = (~route, _children) => {
      TODO: reducer takes action and state as args
      pattern match on actions and return the new state
    */
-  reducer: ((), _) => ReasonReact.NoUpdate,
+  reducer: (action, state) =>
+    switch action {
+    | UpdateBook(updatedBook) => ReasonReact.Update({
+        books: List.map((book: Database.book) => book.id == updatedBook.id ? updatedBook : book, state.books)})
+    | DeleteBook(bookId) => ReasonReact.Update({
+        books: List.filter((book: Database.book) => book.id != bookId, state.books)})
+    | AddBook(title) => ReasonReact.Update({
+      books: List.append([{
+        id: 100,
+        title: title,
+        description: "New book",
+        category: "New category"
+      }: Database.book], state.books)
+  })
+},
   render: ({state: {books}, reduce}) => {
     /* TODO: write functions that our components needs (future) */
     let page =
       switch route {
       | DashBoardRoute => <DashBoard books />
-      | BookDetailsRoute(bookId) => <BookDetail books bookId save=((book) => ()) />
+      | BookDetailsRoute(bookId) => <BookDetail books bookId save=((book) => reduce(() => UpdateBook(book))()) />
+      | ManageBooksRoute => <ManageBooks books 
+          deleteBook=((bookId) => reduce(() => DeleteBook(bookId))()) 
+          addBook=((title) => reduce(() => AddBook(title))()) />
       /* TODO: pattern match with all routes the app has  */
       };
     <div>
