@@ -58,8 +58,8 @@ let make = (~deleteBook, ~addBook, ~books, _children) => {
                 />
               </p>
               <p className="control">
-                /* TODO */
-                <button className="button"> (Utils.ste("Add")) </button>
+                /* TODO, use from input field */
+                <button className="button" onClick=((_) => addBook("New book"))> (Utils.ste("Add")) </button>
               </p>
             </div>
           </div>
